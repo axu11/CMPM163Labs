@@ -145,13 +145,14 @@
 				});
 
 			//create shader cube 2
-			var geometry1, material1, mesh1;
-
+			var geometry1, material1, mesh1, timer;
+			timer = 0;
 			function addCoolCube1() {
 				if(count2 == 2) {
 					let uniforms = {
-						colorB: {type: 'vec3', value: new THREE.Color(0xff0000/*0xffc0cb*/)},
-						colorA: {type: 'vec3', value: new THREE.Color(0x0000ff/*0x7f00ff*/)}
+						colorB: {type: 'vec3', value: new THREE.Color(0xffc0cb/*0xffc0cb*/)},
+						colorA: {type: 'vec3', value: new THREE.Color(0x87ceeb/*0x7f00ff*/)},
+						u_time: {value:timer}
 					 };
 
 					geometry1 = new THREE.BoxGeometry(1, 1, 1);
@@ -175,8 +176,8 @@
 				}
 
 				if(geometry4) {
-				geometry4.rotateX(0.01);
-				geometry4.rotateY(0.01);
+					geometry4.rotateX(0.01);
+					geometry4.rotateY(0.01);
 				}
 
 				if(geometry1) {
@@ -188,8 +189,9 @@
 					geometry2.rotateX(0.01);
 					geometry2.rotateY(0.01);
 				}
-
-
+				material1.uniforms.u_time.value+= 0.012;
+				console.log(Math.abs(Math.sin(material1.uniforms.u_time.value)));
+				// timer++;
 				renderer.render(scene, camera);
 			}
 			animate();
