@@ -19,12 +19,14 @@
      		document.body.appendChild(renderer.domElement);
 			camera.position.z = 5	
 
+
 			// setup cube 2
 			var geometry2 = new THREE.BoxGeometry();
       		var material2 = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x00ff00, shininess: 30 });
 			var cube2 = new THREE.Mesh( geometry2, material2 );
      		scene.add(cube2);
      		cube2.position.x = -1;
+
 
      		// setup cube 4
 			var geometry4 = new THREE.BoxGeometry();
@@ -33,23 +35,86 @@
      		scene.add(cube4);
      		cube4.position.x = 3
 
+
 			// add the light
 			var light = new THREE.PointLight(0xffffff, 1, 1000);
 			light.position.set(10, 10, 10);
 			scene.add(light);
 
+			//set up shader cubes
 			THREE.Cache.enabled = true;
-			var count = 0;
+			var count1 = 0;
+			var count2 = 0;
 			var loader = new THREE.FileLoader();
-			var fshader, vshader;
+			var fshader1, vshader1, fshader2, vshader2;
 
+			//load vertex shader
 			loader.load('shaders/vertexShader.vert',
 				// onLoad callback
 				function (data) {
 					console.log(data); // output the text to the console
-					vshader = data;
-					count += 1;
+					vshader1 = data;
+					count1 += 1;
 					addCoolCube3();
+				},
+				// onProgress callback
+				function (xhr) {
+					console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+				},
+				// onError callback
+				function (err) {
+					console.error('An error happened');
+				});
+
+			//load fragment shader 1
+			loader.load('shaders/fragmentShader.frag',
+				// onLoad callback
+				function (data) {
+						console.log(data); // output the text to the console
+						fshader1 = data;
+						count1 += 1;
+						addCoolCube3();
+						// addCoolCube1();
+					},
+				// onProgress callback
+				function (xhr) {
+					console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+				},
+				// onError callback
+				function (err) {
+					console.error('An error happened');
+				});
+
+			//create shader cube 1
+			var geometry3, material3, mesh3;
+
+			function addCoolCube3() {
+				if(count1 == 2) {
+					let uniforms = {
+						colorB: {type: 'vec3', value: new THREE.Color(0xffc0cb)},
+						colorA: {type: 'vec3', value: new THREE.Color(0xbfff00)}
+					 };
+
+					geometry3 = new THREE.BoxGeometry(1, 1, 1);
+					material3 =  new THREE.ShaderMaterial({
+						uniforms: uniforms,
+						fragmentShader: fshader1,
+						vertexShader: vshader1,
+						precision: "mediump"});
+
+					mesh3 = new THREE.Mesh(geometry3, material3);
+					mesh3.position.x = 1;
+					scene.add(mesh3);
+				}
+			}
+
+			//load vertex shader again
+			loader.load('shaders/vertexShader.vert',
+				// onLoad callback
+				function (data) {
+					console.log(data); // output the text to the console
+					vshader2 = data;
+					count2 += 1;
 					addCoolCube1();
 				},
 				// onProgress callback
@@ -61,13 +126,13 @@
 					console.error('An error happened');
 				});
 
-			loader.load('shaders/fragmentShader.frag',
+			// load fragment shader 2
+			loader.load('shaders/fragmentShader2.frag',
 				// onLoad callback
 				function (data) {
 						console.log(data); // output the text to the console
-						fshader = data;
-						count += 1;
-						addCoolCube3();
+						fshader2 = data;
+						count2 += 1;
 						addCoolCube1();
 					},
 				// onProgress callback
@@ -79,59 +144,21 @@
 					console.error('An error happened');
 				});
 
-			var geometry3, material3, mesh3;
-
-			function addCoolCube3() {
-				if(count == 2) {
-					let uniforms = {
-						colorB: {type: 'vec3', value: new THREE.Color(0xffc0cb)},
-						colorA: {type: 'vec3', value: new THREE.Color(0xbfff00)}
-					 };
-
-					geometry3 = new THREE.BoxGeometry(1, 1, 1);
-					material3 =  new THREE.ShaderMaterial({
-						uniforms: uniforms,
-						fragmentShader: fshader,
-						vertexShader: vshader,
-						precision: "mediump"});
-
-					mesh3 = new THREE.Mesh(geometry3, material3);
-					mesh3.position.x = 1;
-					scene.add(mesh3);
-				}
-			}
-
-			// loader.load('shaders/fragmentShader2.frag',
-			// 	// onLoad callback
-			// 	function (data) {
-			// 			console.log(data); // output the text to the console
-			// 			fshader = data;
-			// 			count += 1;
-			// 			addCoolCube2();
-			// 		},
-			// 	// onProgress callback
-			// 	function (xhr) {
-			// 		console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
-			// 	},
-			// 	// onError callback
-			// 	function (err) {
-			// 		console.error('An error happened');
-			// 	});
-
+			//create shader cube 2
 			var geometry1, material1, mesh1;
 
 			function addCoolCube1() {
-				if(count == 2) {
+				if(count2 == 2) {
 					let uniforms = {
-						colorB: {type: 'vec3', value: new THREE.Color(0xffc0cb)},
-						colorA: {type: 'vec3', value: new THREE.Color(0x7f00ff)}
+						colorB: {type: 'vec3', value: new THREE.Color(0xff0000/*0xffc0cb*/)},
+						colorA: {type: 'vec3', value: new THREE.Color(0x0000ff/*0x7f00ff*/)}
 					 };
 
 					geometry1 = new THREE.BoxGeometry(1, 1, 1);
 					material1 =  new THREE.ShaderMaterial({
 						uniforms: uniforms,
-						fragmentShader: fshader,
-						vertexShader: vshader,
+						fragmentShader: fshader2,
+						vertexShader: vshader2,
 						precision: "mediump"});
 
 					mesh1 = new THREE.Mesh(geometry1, material1);
