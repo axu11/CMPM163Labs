@@ -139,16 +139,19 @@
 		      		});
 
 				var geometryTiled, materialTiled, meshTiled;
-
+				var ratio = 0.5;
 				function addTiledShaderCube() {
 					if(count2 == 2) {
-						var uniforms = {texture1: { type: "t", value: THREE.ImageUtils.loadTexture("191.jpg")}};
+						let uniforms = {
+							texture1: { type: "t", value: THREE.ImageUtils.loadTexture("191.jpg")},
+							textureRatio: {value:ratio}
+						};
 
 				      	geometryTiled = new THREE.BoxGeometry(1, 1, 1);
 				      	materialTiled =  new THREE.ShaderMaterial({
 				        	uniforms: uniforms,
-				      		fragmentShader: fshader,
-				            vertexShader: vshader,
+				      		fragmentShader: fshader2,
+				            vertexShader: vshader2,
 				      		precision: "mediump"});
 
 				      	meshTiled = new THREE.Mesh(geometryTiled, materialTiled);
