@@ -1,4 +1,5 @@
-Lab 4: https://drive.google.com/file/d/1eI9xepwR1qb9VqvJUlkF7b-rZc2h1dY7/view?usp=sharing
+Lab 4 
+Link to video: https://drive.google.com/file/d/1eI9xepwR1qb9VqvJUlkF7b-rZc2h1dY7/view?usp=sharing
 
 The left cube is Part 1 Texture A, made with three.js built in texture functionality.
 The center cube is Part 1 Texture A & Normal Map A,, made with three.js built in texture functionality.
