@@ -23,7 +23,9 @@ tiling so that the texturing would be more visible. I used this rug
 material to make a rug in my scene.
 
 For textures, I added a fir tree mesh and a poplar tree mesh, and applied
-a tree texture onto them. These were all found on the Unity Asset Store.
+tree textures onto them. These were all found on the Unity Asset Store.
+
+The skybox is a dim sunset that I found on the Unity Asset Store.
 
 Picture of scene: https://prnt.sc/sfp4yc
 Picture of scene with lights highlighted: https://prnt.sc/sfp5e3
