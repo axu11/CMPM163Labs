@@ -9,7 +9,6 @@ so that it wouldn't look like they were floating. I made my water wave thinner a
 like a stream running through the scene. I also have a floating sphere with the mountain shader
 applied to it because I thought it looked cool. 
 
-My partner did Part 
-They found
+My partner was not started or finished with the lab when I asked.
 
 We did not help each other with any part of the lab.
