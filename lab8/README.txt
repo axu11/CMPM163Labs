@@ -3,7 +3,7 @@ Part 1
 
 Link to screenshot of city after tutorial: https://prnt.sc/snwrzu
 Link to inspiration: https://vignette.wikia.nocookie.net/witcher/images/4/4e/Tw3_white_orchard.png/revision/latest?cb=20150921170332
-Link to screenshot of inspired city:
+Link to screenshot of inspired city: https://prnt.sc/snxc5j
 
 As I was doing the tutorial, I already knew I wanted to create a 
 rural village rather than a modern urban city. After I finished 
