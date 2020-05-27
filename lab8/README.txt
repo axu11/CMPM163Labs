@@ -12,6 +12,10 @@ get inspiration from. The villages I found influenced me to add
 more villagey things, such as wells and fences, as well 
 as environmental features like rivers and trees.
 
-My partner was not done with the lab when I contacted him.
+My partner made his city by adding an extra loop in the code to 
+stack the buildings on top of each other, turning them into tall 
+skyscrapers. He also added empty space to create a sort of
+enclosed space , protected by the skyscrapers. I thought this
+was an interesting approach.
 
 We did not help each other on the lab.
