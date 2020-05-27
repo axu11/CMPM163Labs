@@ -12,4 +12,6 @@ get inspiration from. The villages I found influenced me to add
 more villagey things, such as wells and fences, as well 
 as environmental features like rivers and trees.
 
+My partner was not done with the lab when I contacted him.
+
 We did not help each other on the lab.
